@@ -5,23 +5,19 @@ import 'package:meta/meta.dart';
 part 'guess_number_state.dart';
 
 class GuessNumberCubit extends Cubit<GuessNumberState> {
-  int chanceLeft;
-  GuessNumberCubit(this.chanceLeft) : super(GuessNumberInitial(chanceLeft));
+  int attemptsLeft;
+  GuessNumberCubit(this.attemptsLeft) : super(GuessNumberInitial(attemptsLeft));
 
-  void checkNumber(String enteredNumber, String correctNumber) {
-    if (enteredNumber == correctNumber) {
-      emit(GuessNumberSucess(chanceLeft));
+  void checkNumber(int enteredNumber, String arrangeMaxNumber) {
+    if (enteredNumber == arrangeMaxNumber) {
+      emit(GuessNumberSuccess(attemptsLeft));
     } else {
-      chanceLeft--;
-      if (chanceLeft > 0) {
-        emit(GuessNumberFault(chanceLeft));
+      attemptsLeft--;
+      if (attemptsLeft > 0) {
+        emit(GuessNumberFault(attemptsLeft));
       } else {
         emit(const GuessNumberGameOver());
- }
+      }
     }
-  }
-
-  void resetState() {
-    emit(GuessNumberDefault(chanceLeft));
   }
 }
