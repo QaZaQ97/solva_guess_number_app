@@ -2,26 +2,26 @@ part of 'guess_number_cubit.dart';
 
 @immutable
 abstract class GuessNumberState {
-  final int chanceLeft;
-  const GuessNumberState(this.chanceLeft);
+  final int attemptsLeft;
+  const GuessNumberState(this.attemptsLeft);
 }
 
 final class GuessNumberInitial extends GuessNumberState {
-  const GuessNumberInitial(int chanceLeft) : super(chanceLeft);
+  const GuessNumberInitial(int attemptsLeft) : super(attemptsLeft);
 }
 
 class GuessNumberDefault extends GuessNumberState {
-  const GuessNumberDefault(int chanceLeft) : super(chanceLeft);
+  const GuessNumberDefault(int attemptsLeft) : super(attemptsLeft);
   final Color backgroundColor = Colors.black;
 }
 
-class GuessNumberSucess extends GuessNumberState {
-  const GuessNumberSucess(int chanceLeft) : super(chanceLeft);
+class GuessNumberSuccess extends GuessNumberState {
+  const GuessNumberSuccess(int attemptsLeft) : super(attemptsLeft);
   final Color backgroundColor = Colors.green;
 }
 
 class GuessNumberFault extends GuessNumberState {
-  const GuessNumberFault(int chanceLeft) : super(chanceLeft);
+  const GuessNumberFault(int attemptsLeft) : super(attemptsLeft);
   final Color backgroundColor = Colors.red;
 }
 
